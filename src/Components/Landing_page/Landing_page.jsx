@@ -59,7 +59,7 @@ const LandingPage = () => {
           </h5>
           <br />
           <div className="btn-container">
-            <Button variant="success">Explore Courses</Button>
+            <Button variant="success"><a className="explore" href={getConfig().LMS_BASE_URL + "/dashboard"}>Explore Courses</a></Button>
           </div>
         </div>
       </div>
