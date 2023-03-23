@@ -99,6 +99,21 @@ a.view-more {
   }
 }
 
+a.explore {
+  background-color: #25a78e;
+  color: #000;
+  border-color: #25a78e;
+  text-decoration: none;
+
+  &:hover:not(.disabled),
+  &:focus:not(.disabled),
+  &:active(.disabled) {
+    background-color: #25a78e;
+    color: #000;
+    border-color: #25a78e;
+  }
+}
+
 .gray-continer {
   margin-top: 105px;
   padding: 124px;
