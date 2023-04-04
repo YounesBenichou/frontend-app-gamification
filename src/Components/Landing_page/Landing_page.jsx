@@ -50,10 +50,10 @@ const LandingPage = () => {
 
   return (
     <main>
-      <div className="gray-continer-claim">
+      <div className="gray-continer-claim section-1">
         <div className="wrapper-continer">
-          <h1>Build your skills with our online courses</h1>
-          <h5>
+          <h1 className="section-1-text">Build your skills with our online courses</h1>
+          <h5 className="section-1-description">
             At vero eos et accusamus et iustio odio dignissimos ducimus qui
             blanditiis praesentium
           </h5>
@@ -64,7 +64,7 @@ const LandingPage = () => {
           </div>
         </div>
       </div>
-      <Container className="cards-continer">
+      <Container className="cards-continer section-2">
         <h2 className="course-title">Our courses</h2>
         <Row>
           {data?.slice(0, index).map((data) => (
@@ -73,12 +73,11 @@ const LandingPage = () => {
             </Col>
           ))}
         </Row>
+
         {data?.length > LIMIT ? (
           showMore && (
             <div className="center">
-              <Button className="load-more" onClick={loadMore}>
-                View more
-              </Button>
+              <Button.Deprecated className="btn-success load-more" onClick={loadMore}>View more</Button.Deprecated>
             </div>
           )
         ) : (

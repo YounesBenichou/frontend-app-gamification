@@ -18,7 +18,7 @@ const CourseCard = (data) => {
       <a className="card-link" href={"/courses/" + data.course_id + "/about"}>
         <div className="card pgn__card card">
           <div className="top-btn-container">
-            <button type="button" className="cost-tag-btn btn btn-primary">
+            <button type="button" className="cost-tag-btn btn btn-primary free">
               Free
             </button>
           </div>

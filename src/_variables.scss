@@ -1,36 +1,33 @@
 $primary: #25a78e;
-$darkGreen: #121212;
+$darkGreen: #1b5c4f;
 $white: #fff;
 $black: #000;
 
 .theme-btn {
-  border-radius: 4px;
-  background-color: $primary;
-  color: $black;
-  border-color: $primary;
-  padding: 15px;
-  margin-top: 60px;
-  &:hover:not(.disabled),
-  &:focus:not(.disabled),
-  &:active(.disabled) {
-    background-color: $darkGreen;
-    color: $white;
-    border: 1px solid $darkGreen;
+  border-radius: 4px !important;
+  background-color: $primary !important;
+  color: $black !important;
+  border-color: $primary !important;
+  padding: 15px !important;
+  &:hover {
+    background-color: $darkGreen !important;
+    color: $white !important;
+    border: 1px solid $darkGreen !important;
   }
 }
 
 a.view-more {
   border-radius: 4px;
-  padding: 15px;
   color: #000;
   border-color: #25a78e;
 
   &:hover:not(.disabled),
   &:focus:not(.disabled),
   &:active(.disabled) {
-    background-color: #25a78e;
-    color: #000;
-    border-color: #25a78e;
+    background-color: #1b5c4f;
+    border-color: #1b5c4f;
+    border-radius: 4px;
+    color: #fff;
   }
 }
 
@@ -42,8 +39,9 @@ a.explore {
   &:hover:not(.disabled),
   &:focus:not(.disabled),
   &:active(.disabled) {
-    background-color: #25a78e;
-    color: #000;
-    border-color: #25a78e;
+    background-color: #1b5c4f;
+    border-color: #1b5c4f;
+    border-radius: 4px;
+    color: #fff;
   }
 }

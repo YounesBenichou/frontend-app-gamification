@@ -25,7 +25,7 @@ const AboutUS = (data) => {
             est et expedita distinctio. Nam libero tempore, cum soluta nobis.
           </p>
           <a className="view-more" href={getConfig().LMS_BASE_URL + "/about"}>
-          <Button.Deprecated className="btn-success explore-btn">Explore Courses</Button.Deprecated>
+          <Button.Deprecated className="btn-success explore-btn">Learn more</Button.Deprecated>
           </a>
         </Container>
       </div>
