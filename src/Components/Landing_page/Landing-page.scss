@@ -46,7 +46,6 @@ div.card-body {
     color: #454545;
   }
   .pgn__card-section {
-    margin-top: 10px;
     margin-bottom: 30px;
     h3 {
       font-size: 23px;
@@ -85,30 +84,33 @@ div.center {
 
 a.view-more {
   border-radius: 4px;
-  padding: 15px;
   color: #000;
   border-color: #25a78e;
 
   &:hover:not(.disabled),
   &:focus:not(.disabled),
   &:active(.disabled) {
-    background-color: #25a78e;
-    color: #000;
-    border-color: #25a78e;
+    background-color: #1b5c4f;
+    border-color: #1b5c4f;
+    border-radius: 4px;
+    color: #fff;
   }
 }
 
 a.explore {
-  color: #000;
-  border-color: #25a78e;
-  text-decoration: none;
+  background-color: #1b5c4f !important;
+  border-color: #1b5c4f !important;
+  border-radius: 4px;
+  color: #fff !important;
+  text-decoration: none !important;
 
   &:hover:not(.disabled),
   &:focus:not(.disabled),
   &:active(.disabled) {
-    background-color: #25a78e;
-    color: #000;
-    border-color: #25a78e;
+    background-color: #1b5c4f;
+    border-color: #1b5c4f;
+    border-radius: 4px;
+    color: #fff;
   }
 }
 
@@ -143,6 +145,8 @@ a.card-link:hover * {
 
 h2.course-title {
   margin-bottom: 30px;
+  text-align: left;
+  font-size: 40px;
 }
 
 div.cards-continer,
@@ -161,6 +165,11 @@ div.wrapper-continer {
     justify-content: center;
     align-items: center;
     margin-bottom: 50px;
+    padding: 150px;
+
+    @media (max-width: 767px) {
+     padding: 0;
+    }
     button {
       @extend .theme-btn;
     }
@@ -173,12 +182,10 @@ div.wrapper-continer {
   color: $black !important;
   border-color: $primary !important;
   padding: 15px !important;
-  &:hover:not(.disabled),
-  &:focus:not(.disabled),
-  &:active(.disabled) {
-    background-color: $darkGreen;
-    color: $white;
-    border: 1px solid $darkGreen;
+  &:hover {
+    background-color: $darkGreen !important;
+    color: $white !important;
+    border: 1px solid $darkGreen !important;
   }
 }
 
@@ -253,4 +260,41 @@ button.enroll-button {
 
 .about-course-tabs {
   text-align: left;
+}
+
+.section-1 {
+  background-image: url("https://images.unsplash.com/photo-1513077202514-c511b41bd4c7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1169&q=80");
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.section-1-text {
+  font-size: 3.5rem;
+  text-align: center;
+}
+
+.section-1-description {
+  font-size: 1.5rem;
+  font-weight: 500;
+  text-align: center;
+}
+
+.pgn__card-footer{
+  justify-content: flex-start !important;
+}
+
+.section-2 {
+  text-align: center;
+}
+
+.load-more {
+  @extend .theme-btn;
+}
+
+.free {
+  width: 59px;
+  height: 30px;
+  border-radius: 15px !important;
+  border: solid 2px #fff !important;
+  background-color: #121212 !important;
 }
