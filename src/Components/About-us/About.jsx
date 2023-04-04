@@ -1,5 +1,5 @@
 import React from "react";
-import { Button } from "react-bootstrap";
+import { Button } from "@edx/paragon";
 import { getConfig } from "@edx/frontend-platform";
 import { Container } from "@edx/paragon";
 
@@ -25,7 +25,7 @@ const AboutUS = (data) => {
             est et expedita distinctio. Nam libero tempore, cum soluta nobis.
           </p>
           <a className="view-more" href={getConfig().LMS_BASE_URL + "/about"}>
-            Learn more
+          <Button.Deprecated className="btn-success explore-btn">Explore Courses</Button.Deprecated>
           </a>
         </Container>
       </div>

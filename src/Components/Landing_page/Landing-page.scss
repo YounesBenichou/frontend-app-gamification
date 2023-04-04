@@ -86,7 +86,6 @@ div.center {
 a.view-more {
   border-radius: 4px;
   padding: 15px;
-  background-color: #25a78e;
   color: #000;
   border-color: #25a78e;
 
@@ -100,7 +99,6 @@ a.view-more {
 }
 
 a.explore {
-  background-color: #25a78e;
   color: #000;
   border-color: #25a78e;
   text-decoration: none;
@@ -166,6 +164,21 @@ div.wrapper-continer {
     button {
       @extend .theme-btn;
     }
+  }
+}
+
+.explore-btn {
+  border-radius: 4px;
+  background-color: $primary !important;
+  color: $black !important;
+  border-color: $primary !important;
+  padding: 15px !important;
+  &:hover:not(.disabled),
+  &:focus:not(.disabled),
+  &:active(.disabled) {
+    background-color: $darkGreen;
+    color: $white;
+    border: 1px solid $darkGreen;
   }
 }
 
