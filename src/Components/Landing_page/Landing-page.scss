@@ -1,7 +1,7 @@
 @import "../../variables";
 
 .pgn__card-wrapper-image-cap {
-  max-height: 250px;
+  max-height: fit-content !important;
   img {
     object-fit: cover;
     max-height: inherit;
