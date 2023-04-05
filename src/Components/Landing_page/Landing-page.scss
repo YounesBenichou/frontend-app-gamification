@@ -29,7 +29,6 @@ div.card {
 
 div.card-body {
   padding: 30px 49px;
-  min-height: 250px;
   display: flex;
   flex-direction: column;
   box-shadow: 0 2px 12px 0 rgba(18, 18, 18, 0.12);
@@ -57,15 +56,20 @@ div.card-body {
       color: #121212;
     }
   }
-  .pgn__card-footer {
-    margin-top: auto;
-    button {
-      border-radius: 25px;
-      background-color: #ffffff;
-      color: #121212;
-      font-size: 14px;
-      border: solid 2px #121212;
-    }
+}
+
+.pgn__card-header .pgn__card-header-content {
+  margin-top: 0 !important;
+}
+
+.pgn__card-footer {
+ 
+  button {
+    border-radius: 25px;
+    background-color: #ffffff;
+    color: #121212;
+    font-size: 14px;
+    border: solid 2px #121212;
   }
 }
 

@@ -22,6 +22,7 @@ const LandingPage = () => {
   const [index, setIndex] = useState(LIMIT);
 
   const update_data = async function () {
+    console.log(URL_Courses)
     try {
         const result = await axios(URL_Courses, {
             params: { page_size: 100 },
@@ -30,7 +31,6 @@ const LandingPage = () => {
         
     } catch (error) {
         console.log(error);
-        console.log(URL_Courses)
     }
    
   };
