@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect, useMediaQuery } from "react";
 import { Button } from "react-bootstrap";
-import { Card } from "@edx/paragon";
+import { Card, Hyperlink } from "@edx/paragon";
 import { getConfig } from "@edx/frontend-platform";
 
 const CourseCard = (data) => {
+  useEffect(() => {
+    console.log(data);
+  });
   let date = (str) => {
     let unformatData = new Date(str);
     const options = {
@@ -13,9 +16,10 @@ const CourseCard = (data) => {
     };
     return unformatData.toLocaleDateString("en-US", options);
   };
+
   return (
     <>
-      <a className="card-link" href={"/courses/" + data.course_id + "/about"}>
+      {/* <a className="card-link" href={"/courses/" + data.course_id + "/about"}>
         <div className="card pgn__card card">
           <div className="top-btn-container">
             <button type="button" className="cost-tag-btn btn btn-primary free">
@@ -43,7 +47,34 @@ const CourseCard = (data) => {
             </div>
           </div>
         </div>
-      </a>
+      </a> */}
+      <Hyperlink destination="https://www.edx.org">
+      <Card isClickable>
+      <div className="top-btn-container">
+            <button type="button" className="cost-tag-btn btn btn-primary free">
+              Free
+            </button>
+          </div>
+
+        <Card.ImageCap
+          style={{display: "block"}}
+          src={data.media.image.large}
+          srcAlt="Card image"
+        />
+        <div className="card-body">
+        <div className="pgn__card-header">
+              <span className="pgn__card-header-content">{data.org}</span>
+          </div>
+        <Card.Header title={data.name}/>
+        <br/>
+        <div className="pgn__card-footer vertical">
+              <button type="button" className="date-btn btn btn-primary">
+                Started: {date(data.start)}
+              </button>
+            </div>
+        </div>    
+      </Card>
+    </Hyperlink>
     </>
   );
 };
