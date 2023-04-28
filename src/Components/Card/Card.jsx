@@ -1,7 +1,6 @@
 import React, { useEffect, useMediaQuery } from "react";
-import { Button } from "react-bootstrap";
+
 import { Card, Hyperlink } from "@edx/paragon";
-import { getConfig } from "@edx/frontend-platform";
 
 const CourseCard = (data) => {
   useEffect(() => {
@@ -19,37 +18,9 @@ const CourseCard = (data) => {
 
   return (
     <>
-      {/* <a className="card-link" href={"/courses/" + data.course_id + "/about"}>
-        <div className="card pgn__card card">
-          <div className="top-btn-container">
-            <button type="button" className="cost-tag-btn btn btn-primary free">
-              Free
-            </button>
-          </div>
-          <div className="card-image pgn__card-wrapper-image-cap vertical">
-            <img
-              className="pgn__card-image-cap"
-              src={data.media.image.large}
-              alt="Card image"
-            />
-          </div>
-          <div className="card-body">
-            <div className="pgn__card-header">
-              <span className="pgn__card-header-content">{data.org}</span>
-            </div>
-            <div className="pgn__card-section">
-              <h3>{data.name}</h3>
-            </div>
-            <div className="pgn__card-footer vertical">
-              <button type="button" className="date-btn btn btn-primary">
-                Started: {date(data.start)}
-              </button>
-            </div>
-          </div>
-        </div>
-      </a> */}
+      
       <Hyperlink destination={"/courses/"+ data.id +"/about"}>
-      <Card isClickable>
+      <Card isClickable data-testid="course-card">
       <div className="top-btn-container">
             <button type="button" className="cost-tag-btn btn btn-primary free">
               Free
@@ -58,7 +29,7 @@ const CourseCard = (data) => {
 
         <Card.ImageCap
           style={{display: "block"}}
-          src={data.media.image.large}
+          src={data?.media?.image?.large}
           srcAlt="Card image"
         />
         <div className="card-body">
