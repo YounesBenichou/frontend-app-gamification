@@ -19,7 +19,7 @@ const CourseCard = (data) => {
   return (
     <>
       
-      <Hyperlink destination={"/courses/course-v1:"+ data.name +"/about"}>
+      <Hyperlink destination={"/courses/"+ data.id +"/about"}>
       <Card isClickable data-testid="course-card">
       <div className="top-btn-container">
             <button type="button" className="cost-tag-btn btn btn-primary free">
