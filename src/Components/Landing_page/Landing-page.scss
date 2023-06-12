@@ -302,3 +302,59 @@ button.enroll-button {
   border: solid 2px #fff !important;
   background-color: #121212 !important;
 }
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  background-color: transparent;
+
+  @media (max-width: 767px) {
+    flex-wrap: wrap;
+    row-gap: 20px;
+    column-gap: 20px;
+   }
+ }
+
+ .nav-auth-container {
+  padding: 20px;
+  display: flex;
+  column-gap: 10px;
+  align-items: flex-start;
+  
+  button, .username, .username-icon {
+    color: rgb(0, 0, 0);
+  }
+
+  .username {
+    // margin-top: 20px;
+  }
+
+  .btn-icon__icon-container {
+    color: #928e8e;
+  }
+
+  .btn-icon .btn-icon__icon {
+    height: 1.5em;
+    width: 1.5em;
+  }
+
+ }
+
+ .btn-login {
+  background-color: $primary !important;
+  color: black !important;
+
+  &:hover{
+  color: white !important;
+  background-color: $darkGreen !important;
+  }
+ }
+
+ .btn-register {
+background-color: $primary !important;
+color: black !important;
+  &:hover{
+  color: white !important;
+  background-color: $darkGreen !important;
+  }
+ }

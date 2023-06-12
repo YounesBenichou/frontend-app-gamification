@@ -8,7 +8,7 @@ import { getConfig } from "@edx/frontend-platform";
 
 import CourseCard from "../Card/Card";
 import AboutUS from "../About-us/About";
-
+import Navigation from "../Navigation/navigation";
 import "./Landing-page.scss";
 
 const URL_Courses = getConfig().LMS_BASE_URL + "/api/courses/v1/courses/";
@@ -51,6 +51,7 @@ const LandingPage = () => {
   return (
     <main>
       <div className="gray-continer-claim section-1">
+        <Navigation/>
         <div className="wrapper-continer">
           <h1 className="section-1-text">Build your skills with our online courses</h1>
           <h5 className="section-1-description">
