@@ -1,34 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Button, Container, Col, Card, Icon, Dropdown, IconButton} from "@edx/paragon";
 import { getConfig } from "@edx/frontend-platform";
 import { useCookies } from 'react-cookie';
 import { Person } from '@edx/paragon/icons';
+import { AppContext } from '@edx/frontend-platform/react';
+
 
 const Navigation = () => {
   const currentURL = window.location.href;
   const urlWithoutProtocol = currentURL.replace('https://', '');
   const [cookies] = useCookies(['edxloggedin', 'edx-user-info']);
-  let username = ''
-  // Access the cookie value
-  const userLoggedIn = cookies['edxloggedin'];
-  const userInfo = cookies['edx-user-info'];
-  if (userInfo) {
-    const jsonStringWithoutBackslashes = userInfo.replace(/\\/g, '');
-    const formattedData = jsonStringWithoutBackslashes.replace(/(?<=\})\s*"(?=\w)/g, '",').replace(/(?<=\d|\w)\s*"(?=\w)/g, '", "');
-    
-    const cleanedString = formattedData .replace(/"(054)",|054/g, '');
-    const jsonString = cleanedString.replace(': 1"', ': "1"');
-    const finalString = jsonString.replace('}",', '},');
+  let username = '';
+  const { authenticatedUser } = useContext(AppContext);
 
-    try {
-        const userInfoObject = JSON.parse(finalString);
-         username = userInfoObject.username;
-       } catch (error) {
-         // Handle the JSON parsing error, provide a fallback value if needed
-         console.error('Error parsing JSON:', error);
-       }
-  } else {
-    //Do nothing
+  if (authenticatedUser) {
+    username = authenticatedUser.username;
   }
 
 
@@ -38,7 +24,7 @@ const Navigation = () => {
         {/* <img className="logo" src={Logo} alt="brand-logo"/> */}
          </div>
          
-         {userLoggedIn ? (
+         {authenticatedUser ? (
         <div className="nav-auth-container">
           <Dropdown>
   <Dropdown.Toggle
