@@ -358,3 +358,15 @@ color: black !important;
   background-color: $darkGreen !important;
   }
  }
+
+ .home-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.home-logo img {
+  padding-left: 15px;
+  max-height: 50px; /* Adjust as needed */
+  width: auto; /* Maintains aspect ratio */
+}

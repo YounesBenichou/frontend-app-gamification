@@ -9,6 +9,7 @@ import { getConfig } from "@edx/frontend-platform";
 import CourseCard from "../Card/Card";
 import AboutUS from "../About-us/About";
 import Navigation from "../Navigation/navigation";
+import Footer, { messages as footerMessages } from '@edx/frontend-component-footer';
 import "./Landing-page.scss";
 
 const URL_Courses = getConfig().LMS_BASE_URL + "/api/courses/v1/courses/";
@@ -51,7 +52,12 @@ const LandingPage = () => {
   return (
     <main>
       <div className="gray-continer-claim section-1">
-        <Navigation/>
+        <div className="home-header">
+          <a href="http://local.overhang.io:8000/dashboard" class="home-logo">
+            <img class="d-block" src="http://local.overhang.io:8000/theming/asset/images/logo.png" alt="Community Theme"/>
+          </a>
+          <Navigation/>
+        </div>
         <div className="wrapper-continer">
           <h1 className="section-1-text">Build your skills with our online courses</h1>
           <h5 className="section-1-description">
@@ -86,6 +92,7 @@ const LandingPage = () => {
         )}
       </Container>
       <AboutUS />
+      <Footer />
     </main>
   );
 };
