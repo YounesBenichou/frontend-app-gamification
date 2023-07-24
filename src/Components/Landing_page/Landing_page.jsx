@@ -53,8 +53,8 @@ const LandingPage = () => {
     <main>
       <div className="gray-continer-claim section-1">
         <div className="home-header">
-          <a href="http://local.overhang.io:8000/dashboard" class="home-logo">
-            <img class="d-block" src="http://local.overhang.io:8000/theming/asset/images/logo.png" alt="Community Theme"/>
+          <a href="/dashboard" class="home-logo">
+            <img class="d-block" src="/theming/asset/images/logo.png" alt="Community Theme"/>
           </a>
           <Navigation/>
         </div>
