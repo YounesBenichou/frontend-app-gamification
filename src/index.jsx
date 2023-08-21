@@ -13,23 +13,30 @@ import { Route, Switch } from "react-router-dom";
 
 
 import appMessages from "./i18n";
-import LandingPage from "./Components/Landing_page/Landing_page";
 
 import "./index.scss";
-import NotFoundPage from "./Components/NotFoundPage";
 // import About from "./Components/Course_About/Course_about";
+import App from "./App";
+import { BrowserRouter } from "react-router-dom";
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
-    <AppProvider>
-      <main>
-        <Switch>
-          <Route path="*" component={LandingPage} />
+    <React.StrictMode>
+    <AppProvider> 
+      {/* <main> */}
+        {/* <Switch>
+          <Route path="*" component={LandingPage} /> */}
           {/* <Route path="/courses/:courseId/about" component={About} /> */}
-          <Route path="*" component={NotFoundPage} />
-        </Switch>
-      </main>
-    </AppProvider>,
+          {/* <Route path="*" component={NotFoundPage} /> */}
+
+        {/* </Switch> */}
+        <BrowserRouter>
+          <App />
+        </BrowserRouter>
+      {/* </main> */}
+    </AppProvider>
+    </React.StrictMode>
+    ,
     document.getElementById("root")
   );
 });
