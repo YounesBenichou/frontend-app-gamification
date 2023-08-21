@@ -1,55 +1,37 @@
-import { useState } from "react";
+
+// components
 import { Switch, Route } from "react-router-dom";
-import Topbar from "./scenes/global/Topbar";
-import Sidebar from "./scenes/global/Sidebar";
-import Dashboard from "./scenes/dashboard";
-import Team from "./scenes/team";
-import Invoices from "./scenes/invoices";
-import Contacts from "./scenes/contacts";
-import Bar from "./scenes/bar";
-import Form from "./scenes/form";
-import Line from "./scenes/line";
-import Pie from "./scenes/pie";
-import FAQ from "./scenes/faq";
-import Geography from "./scenes/geography";
-import { CssBaseline, ThemeProvider } from "@mui/material";
-import { ColorModeContext, useMode } from "./theme";
-import Calendar from "./scenes/calendar/calendar";
+import { BrowserRouter } from "react-router-dom";
+
+
+import ThemeProvider from "./theme";
+import ScrollToTop from "./components/scroll-to-top/ScrollToTop";
+import StyledChart from "./components/chart";
+// layouts
+import DashboardLayout from './layouts/dashboard';
+import SimpleLayout from './layouts/simple';
+// Pages
+import BlogPage from './pages/BlogPage';
+import UserPage from './pages/UserPage';
+import LoginPage from './pages/LoginPage';
+import Page404 from './pages/Page404';
+import ProductsPage from './pages/ProductsPage';
+import DashboardAppPage from './pages/DashboardAppPage';
+
 
 function App() {
-  const [theme, colorMode] = useMode();
-  const [isSidebar, setIsSidebar] = useState(true);
 
   return (
-    <ColorModeContext.Provider value={colorMode}>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className="app">
-          <Sidebar isSidebar={isSidebar} />
-          <main className="content">
-            
-            <Topbar setIsSidebar={setIsSidebar} />
-            {/* <Dashboard /> */}
-            <Switch>
-            <Route exact path="/dashboard"> <Dashboard /> </Route>
-
-              <Route path="/team"><Team /></Route>
-              {/* <Route path="/team" element={<Team />} /> */}
-              <Route path="/contacts"> <Contacts /> </Route>
-              <Route path="/invoices"> <Invoices /> </Route>
-              <Route path="/form"> <Form /> </Route>
-              <Route path="/bar" element={<Bar />} />
-              <Route path="/pie" element={<Pie />} />
-              <Route path="/line" element={<Line />} />
-              <Route path="/faq" element={<FAQ />} />
-              <Route path="/calendar" element={<Calendar />} />
-              <Route path="/geography" element={<Geography />} />
-            </Switch>
-          </main>
-        </div>
+    <BrowserRouter>
+      <ThemeProvider>
+        <ScrollToTop />
+        <Switch>
+          <Route path="/dashboard"><DashboardLayout /></Route>
+        </Switch>  
       </ThemeProvider>
-    </ColorModeContext.Provider>
+    </BrowserRouter>      
   );
 }
 
 export default App;
+

@@ -9,32 +9,21 @@ import {
 import { AppProvider, ErrorPage } from "@edx/frontend-platform/react";
 import React from "react";
 import ReactDOM from "react-dom";
-import { Route, Switch } from "react-router-dom";
-
-
 import appMessages from "./i18n";
-
-import "./index.scss";
-// import About from "./Components/Course_About/Course_about";
 import App from "./App";
-import { BrowserRouter } from "react-router-dom";
+import { HelmetProvider } from 'react-helmet-async';
+
+
 
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <React.StrictMode>
-    <AppProvider> 
-      {/* <main> */}
-        {/* <Switch>
-          <Route path="*" component={LandingPage} /> */}
-          {/* <Route path="/courses/:courseId/about" component={About} /> */}
-          {/* <Route path="*" component={NotFoundPage} /> */}
-
-        {/* </Switch> */}
-        <BrowserRouter>
+      <HelmetProvider>
+        <AppProvider> 
+        
           <App />
-        </BrowserRouter>
-      {/* </main> */}
-    </AppProvider>
+        </AppProvider>
+      </HelmetProvider> 
     </React.StrictMode>
     ,
     document.getElementById("root")
