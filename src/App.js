@@ -26,7 +26,7 @@ function App() {
       <ThemeProvider>
         <ScrollToTop />
         <Switch>
-          <Route path="/dashboard"><DashboardLayout /></Route>
+          <Route path="/"><DashboardLayout /></Route>
         </Switch>  
       </ThemeProvider>
     </BrowserRouter>      

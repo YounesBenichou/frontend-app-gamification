@@ -47,7 +47,6 @@ export default function DashboardLayout() {
       <Switch>
             <Route path="/dashboard/user"><UserPage /></Route>
             <Route path="/dashboard/blog"><BlogPage /></Route>
-
       </Switch>
       </Main>
     </StyledRoot>
