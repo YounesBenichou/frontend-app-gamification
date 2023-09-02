@@ -41,7 +41,7 @@ export default function DashboardLayout() {
 
       <Header onOpenNav={() => setOpen(true)} />
 
-      <Nav openNav={open} onCloseNav={() => setOpen(false)} />
+      {/* <Nav openNav={open} onCloseNav={() => setOpen(false)} /> */}
 
       <Main>
       <Switch>
