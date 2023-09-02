@@ -99,7 +99,7 @@ const [postItem,setPostItem]= React.useState(intialPostItem)
   useEffect(() => {
     update_data();
     setPostItem({...postItem, 'author':userId})
-    console.log(postItem)
+    console.log(getConfig().LMS_BASE_URL + "/api/posts/v1/posts/")
   }, []);
   
   return (

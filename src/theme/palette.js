@@ -16,6 +16,12 @@ const GREY = {
   900: '#161C24',
 };
 
+// Djezzy academy
+const RED = {
+  darker: '#CA1F19',
+  lighter: '#ED8F8F',
+}
+
 const PRIMARY = {
   lighter: '#D1E9FC',
   light: '#76B0F1',
@@ -23,6 +29,7 @@ const PRIMARY = {
   dark: '#103996',
   darker: '#061B64',
   contrastText: '#fff',
+  
 };
 
 const SECONDARY = {
@@ -32,6 +39,7 @@ const SECONDARY = {
   dark: '#1939B7',
   darker: '#091A7A',
   contrastText: '#fff',
+  
 };
 
 const INFO = {
@@ -73,6 +81,7 @@ const ERROR = {
 const palette = {
   common: { black: '#000', white: '#fff' },
   primary: PRIMARY,
+  red: RED,
   secondary: SECONDARY,
   info: INFO,
   success: SUCCESS,

@@ -7,7 +7,7 @@ import Header from './header';
 import Nav from './nav';
 import UserPage from '../../pages/UserPage';
 import BlogPage from '../../pages/BlogPage';
-
+import GamificationPage from '../../pages/GamificationPage';
 // ----------------------------------------------------------------------
 
 const APP_BAR_MOBILE = 64;
@@ -36,9 +36,9 @@ const Main = styled('div')(({ theme }) => ({
 
 export default function DashboardLayout() {
   const [open, setOpen] = useState(false);
-
   return (
     <StyledRoot>
+
       <Header onOpenNav={() => setOpen(true)} />
 
       <Nav openNav={open} onCloseNav={() => setOpen(false)} />
@@ -47,6 +47,7 @@ export default function DashboardLayout() {
       <Switch>
             <Route path="/dashboard/user"><UserPage /></Route>
             <Route path="/dashboard/blog"><BlogPage /></Route>
+            <Route path="/dashboard/product"><GamificationPage /></Route>
       </Switch>
       </Main>
     </StyledRoot>
