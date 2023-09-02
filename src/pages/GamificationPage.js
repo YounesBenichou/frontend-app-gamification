@@ -4,11 +4,9 @@ import { useState } from 'react';
 // @mui
 import { Container, Stack, Box,Typography, Button } from '@mui/material';
 // components
-import { ProductSort, ProductList, ProductCartWidget, ProductFilterSidebar } from '../sections/@dashboard/products';
 import Modal from '@mui/material/Modal';
 
 // mock
-import PRODUCTS from '../_mock/products';
 // style 
 import palette from '../theme/palette';
 // ----------------------------------------------------------------------

@@ -5,11 +5,8 @@ import { Box, Stack, AppBar, Toolbar, IconButton, Button } from '@mui/material';
 // utils
 import { bgBlur } from '../../../utils/cssStyles';
 // components
-import Iconify from '../../../components/iconify';
 //
-import Searchbar from './Searchbar';
 import AccountPopover from './AccountPopover';
-import LanguagePopover from './LanguagePopover';
 import NotificationsPopover from './NotificationsPopover';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import palette from '../../../theme/palette';

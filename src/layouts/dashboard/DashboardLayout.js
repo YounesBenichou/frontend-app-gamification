@@ -4,9 +4,6 @@ import { styled } from '@mui/material/styles';
 //
 import { Switch, Route } from "react-router-dom";
 import Header from './header';
-import Nav from './nav';
-import UserPage from '../../pages/UserPage';
-import BlogPage from '../../pages/BlogPage';
 import GamificationPage from '../../pages/GamificationPage';
 // ----------------------------------------------------------------------
 
@@ -45,9 +42,7 @@ export default function DashboardLayout() {
 
       <Main>
       <Switch>
-            <Route path="/dashboard/user"><UserPage /></Route>
-            <Route path="/dashboard/blog"><BlogPage /></Route>
-            <Route path="/dashboard/product"><GamificationPage /></Route>
+            <Route path="/"><GamificationPage /></Route>
       </Switch>
       </Main>
     </StyledRoot>
