@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
+import {Button} from '@mui/material';
 import Paper from '@mui/material/Paper';
 import Stack from '@mui/material/Stack';
 import { styled } from '@mui/material/styles';
@@ -10,6 +11,7 @@ import Grid from '@mui/material/Grid';
 import { useCookies } from 'react-cookie';
 import {AppContext} from '@edx/frontend-platform/react';
 import { useContext } from 'react';
+import palette from '../../theme/palette';
 
 
 const Item = styled(Paper)(({ theme }) => ({
@@ -43,7 +45,7 @@ export default function ScoreBadge() {
     <Box sx={{ flexGrow: 1 ,
       }} >
       <Grid container spacing={2} sx={{ 
-            paddingInline: '40px', 
+            paddingInline: '10px', 
             paddingY: '20px',
             display: 'flex', 
             justifyContent: "space-between",
@@ -56,13 +58,11 @@ export default function ScoreBadge() {
         }} >
         <Grid sx={{background:'#fff', display:'flex', background: 'transparent',borderRadius: '20px', justifyContent:'start', alignItems:'center'}} item xs={4}>
           <Item sx={{textAlign: 'start',background: 'transparent',}}>
-            <Typography variant="h3">
-                Bonjour ! <br></br>Younes Benichou
-            </Typography>
-          </Item> 
-        </Grid>
-        <Grid sx={{background:'#fff',background: 'transparent', display:'flex',borderRadius: '20px', justifyContent:'center', alignItems:'center'}} item xs={3}>     
-            <Box
+          <Stack direction="row" alignItems="center" spacing={2}>
+              <Typography variant="h6">
+                  Bonjour ! <br></br>Younes Benichou
+              </Typography>
+              <Box
                 width={140}
                 height={140}
                 borderRadius="50%" // Set borderRadius to 50% to create a circle
@@ -73,17 +73,28 @@ export default function ScoreBadge() {
                 color="#D00000"
                 border= "10px solid #D00000"
                 >
-                  <Typography variant="h5" textAlign="center" gutterBottom>
-                      200 <br/> pts
+                  <Typography variant="h4" textAlign="center" gutterBottom>
+                      2000 <br/> pts
                   </Typography>
-            </Box>     
+            </Box>
+            </Stack>
+            
+             
+          </Item> 
+        </Grid>
+        <Grid sx={{background:'#fff',background: 'transparent', display:'flex',borderRadius: '20px', justifyContent:'center', alignItems:'center'}} item xs={3}>     
+          <Button variant="contained" sx={{
+            transform: 'scale(2)',
+            borderRadius: '40px',
+            backgroundColor: palette.red['darker']
+          }}>Convertir en Cadeaux !</Button>   
         </Grid>
         <Grid sx={{background:'#fff', background: 'transparent', borderRadius: '20px',paddingRight:'40px', display:'flex', justifyContent:'end', alignItems:'center'}} item xs={4}>
           
           <Item sx={{textAlign: 'start', background: 'transparent',}}>
           <Stack direction="column">
-            <img width="170" src={'http://local.overhang.io:8000/media/badge_images/Master.png'}/>
-            <Typography variant="h6" textAlign="center" gutterBottom>
+            <img width="220" src={'http://local.overhang.io:8000/media/badge_images/Master.png'}/>
+            <Typography variant="h4" textAlign="center" gutterBottom>
                 Gold
             </Typography>
           </Stack>

@@ -33,11 +33,6 @@ const style = {
   backgroundColor: 'white',
 };
 
-class Car extends SpinningWheel {
-  render() {
-    return <h2>Hi, I am a Car!</h2>;
-  }
-}
 
 export default function GamificationPage() {
   const [open, setOpen] = useState(false);
@@ -59,8 +54,20 @@ export default function GamificationPage() {
       <Helmet>
         <title> Mes accomplissements </title>
       </Helmet>
-
+      
+      <img src={'/assets/background-layers.svg'} style={{
+        position: 'absolute',
+        left: '-20%'
+      }}>
+      </img>
+      <img src={'/assets/background-layers.svg'} style={{
+        position: 'absolute',
+        left: '85%',
+        top: '20%'
+      }}></img>
+      
       <Container>
+      
         <ScoreBadge></ScoreBadge>
 
         <Stack direction="row" alignItems="center" justifyContent="space-between" my={5}>
@@ -84,6 +91,7 @@ export default function GamificationPage() {
           </Box>
         </Modal>
       </Container>
+      
     </>
   );
 }

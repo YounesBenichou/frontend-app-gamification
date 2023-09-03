@@ -27,6 +27,8 @@ const Main = styled('div')(({ theme }) => ({
     paddingLeft: theme.spacing(2),
     paddingRight: theme.spacing(2),
   },
+  
+
 }));
 
 // ----------------------------------------------------------------------
@@ -39,7 +41,7 @@ export default function DashboardLayout() {
       <Header onOpenNav={() => setOpen(true)} />
 
       {/* <Nav openNav={open} onCloseNav={() => setOpen(false)} /> */}
-
+      
       <Main>
       <Switch>
             <Route path="/"><GamificationPage /></Route>
