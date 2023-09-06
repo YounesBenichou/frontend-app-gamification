@@ -68,7 +68,7 @@ export default function ScoreBadge() {
 
   const testapi = async() =>{
     try{
-      const result = await axios.get('http://local.overhang.io:8000/api/courses/v1/courses/')
+      const result = await axios.get('http://studio.local.overhang.io:8001/csrf/api/v1/token')
       console.log(result.data)
     }catch(error){
       console.log("error token", error)
