@@ -42,7 +42,7 @@ export default function ScoreBadge() {
   }
 
   const studio_request = async() =>{
-    const studio = {"org": "OpenCraftX", "number": "TEST3", "display_name3": "A Test Course3", "run": "1013"}
+    const studio = {"org": "OpenCraftX", "number": "TEST4", "display_name4": "A Test Course4", "run": "1014"}
     const URL_POST_UpdateScore = 'http://studio.local.overhang.io:8001/course/'
     try{
       const result = await axios.get('http://studio.local.overhang.io:8001/csrf/api/v1/token')
@@ -64,6 +64,15 @@ export default function ScoreBadge() {
     }
    
     
+  }
+
+  const testapi = async() =>{
+    try{
+      const result = await axios.get('http://local.overhang.io:8000/api/courses/v1/courses/')
+      console.log(result.data)
+    }catch(error){
+      console.log("error token", error)
+    }
   }
   React.useEffect( ()=>{
     console.log(user_data)
@@ -111,7 +120,7 @@ export default function ScoreBadge() {
           </Item> 
         </Grid>
         <Grid sx={{background:'#fff',background: 'transparent', display:'flex',borderRadius: '20px', justifyContent:'center', alignItems:'center'}} item xs={3}>     
-          <Button variant="contained" onClick={studio_request} sx={{
+          <Button variant="contained" onClick={testapi} sx={{
             transform: 'scale(2)',
             borderRadius: '40px',
             backgroundColor: palette.red['darker'],
