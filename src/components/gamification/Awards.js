@@ -22,6 +22,7 @@ import {
   IconButton,
   TableContainer,
   TablePagination,
+  Unstable_Grid2 as Grid
 } from '@mui/material';
 
 import Label from '../label/Label';
@@ -41,10 +42,10 @@ import LeaderBoardUserListHead from '../../sections/@dashboard/user/LeaderBoardU
 
 // Table Head 
 const TABLE_HEAD = [
-  { id: 'name', label: 'Nom', alignRight: false },
-  { id: 'rank', label: 'Classement', alignRight: false },
-  { id: 'points', label: 'Points', alignRight: false },
-  { id: 'badge', label: 'Badge', alignRight: false },
+  { id: 'name', label: 'Titre de cadeau', alignRight: false },
+  { id: 'description', label: 'Description', alignRight: false },
+  { id: 'created', label: 'Date de conversion', alignRight: false },
+  { id: 'delivery_date', label: 'Délivré', alignRight: false },
 ];
 
 // ----------------------------------------------------------------------
@@ -78,7 +79,10 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function LeaderBoard() {
+
+
+
+export default function Awards() {
     // Authenticated user 
   let userId = '';
   const { authenticatedUser } = useContext(AppContext);
@@ -89,7 +93,7 @@ export default function LeaderBoard() {
     console.log(user_data)
   }
 
-  //  
+  // 
   
 const [open, setOpen] = useState(null);
 
@@ -163,8 +167,6 @@ const filteredUsers = applySortFilter(LEADERBORDLIST, getComparator(order, order
 
 const isNotFound = !filteredUsers.length && !!filterName;
 
-
-// Ref 
 
   return (
     <>
@@ -269,13 +271,8 @@ const isNotFound = !filteredUsers.length && !!filterName;
                           </Typography>
                         </TableCell>
                         {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <img width={40} src='/assets/badges/Gold.png' />
-                            <Typography variant="subtitle2" noWrap>
-                              Gold
-                            </Typography>
-                          </Stack>
+                        <TableCell align="left">
+                          <Label color={('pendeding' === 'pendeding' && 'default') || 'success'}>Pas encore</Label>
                         </TableCell>
 
                         
@@ -346,8 +343,11 @@ const isNotFound = !filteredUsers.length && !!filterName;
               </Table>
             </TableContainer>
         </Card>
+        
 
-   
+        
+        
+      
     </>
   );
 } 
