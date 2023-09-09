@@ -37,14 +37,13 @@ import LEADERBORDLIST from '../../_mock/leaderboard'
 import { useCookies } from 'react-cookie';
 import {AppContext} from '@edx/frontend-platform/react';
 import { useContext } from 'react';
-import LeaderBoardUserListHead from '../../sections/@dashboard/user/LeaderBoardUserList';
+import AwardUserListHead from '../../sections/@dashboard/user/AwardUserList';
 
 
 // Table Head 
 const TABLE_HEAD = [
   { id: 'name', label: 'Titre de cadeau', alignRight: false },
   { id: 'description', label: 'Description', alignRight: false },
-  { id: 'created', label: 'Date de conversion', alignRight: false },
   { id: 'delivery_date', label: 'Délivré', alignRight: false },
 ];
 
@@ -82,7 +81,7 @@ function applySortFilter(array, comparator, query) {
 
 
 
-export default function Awards() {
+export default function Awards({userAwards}) {
     // Authenticated user 
   let userId = '';
   const { authenticatedUser } = useContext(AppContext);
@@ -90,7 +89,6 @@ export default function Awards() {
 
   if (authenticatedUser) {
     userId = user_data.authenticatedUser.userId;
-    console.log(user_data)
   }
 
   // 
@@ -172,149 +170,50 @@ const isNotFound = !filteredUsers.length && !!filterName;
     <>
         
         <Card>
-
+            {userAwards && 
             <TableContainer sx={{minWidth: 1000 }}>
               <Table>
-                <LeaderBoardUserListHead
+                <AwardUserListHead
                   order={order}
                   orderBy={orderBy}
                   headLabel={TABLE_HEAD}
                   rowCount={LEADERBORDLIST.length}
                   onRequestSort={handleRequestSort}
-                />
+                >
+                </AwardUserListHead>
                 <TableBody>
-                <TableRow  hover  tabIndex={-1} role="checkbox">
-                        
+                {userAwards.map((row) => {
+                      const {award_id,delivery_date} = row
+                      return (
+                        <TableRow  hover  tabIndex={-1} role="checkbox">
+                                
+                                <TableCell sx={{width:'20%'}} align="left">
+                                    <Typography variant="subtitle2" noWrap>
+                                      {award_id.name}
+                                    </Typography>
+                                </TableCell>
+        
+                                <TableCell align="left">
+                                  <Typography variant="subtitle2" noWrap>
+                                    {award_id.description}
+                                  </Typography>
+                                </TableCell>
 
-                        <TableCell  align="left">
-                            <Typography variant="subtitle2" noWrap>
-                              Hafri Seif
-                            </Typography>
-                         
-                        </TableCell>
+                                <TableCell align="left">
+                                  {delivery_date ?
+                                    <Label color='success'>Délivré</Label>
+                                    :
+                                    <Label color='error'>Pas encore</Label>
+                                  }
+                                </TableCell>
+        
+                                
+        
+                                
+                        </TableRow>
+                        )
+                    })}
 
-                        <TableCell align="left">
-                        <Typography variant="subtitle2" noWrap>
-                            1
-                          </Typography>
-                        </TableCell>
-
-                        <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
-                            3000
-                          </Typography>
-                        </TableCell>
-                        {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <img width={40} src='/assets/badges/Master.png' />
-                            <Typography variant="subtitle2" noWrap>
-                              Master
-                            </Typography>
-                          </Stack>
-                        </TableCell>
-
-                        
-                </TableRow>
-                <TableRow  hover  tabIndex={-1} role="checkbox">
-                        
-
-                        <TableCell  align="left">
-                            <Typography variant="subtitle2" noWrap>
-                              Noui Akram
-                            </Typography>
-                         
-                        </TableCell>
-
-                        <TableCell align="left">
-                        <Typography variant="subtitle2" noWrap>
-                            2
-                          </Typography>
-                        </TableCell>
-
-                        <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
-                            2500
-                          </Typography>
-                        </TableCell>
-                        {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <img width={40} src='/assets/badges/Elite.png' />
-                            <Typography variant="subtitle2" noWrap>
-                              Elite
-                            </Typography>
-                          </Stack>
-                        </TableCell>
-
-                        
-                </TableRow>
-                <TableRow  hover  tabIndex={-1} role="checkbox">
-                        
-
-                        <TableCell  align="left">
-                            <Typography variant="subtitle2" noWrap>
-                              Benichou Younes
-                            </Typography>
-                         
-                        </TableCell>
-
-                        <TableCell align="left">
-                        <Typography variant="subtitle2" noWrap>
-                            3
-                          </Typography>
-                        </TableCell>
-
-                        <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
-                            2000
-                          </Typography>
-                        </TableCell>
-                        {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell align="left">
-                          <Label color={('pendeding' === 'pendeding' && 'default') || 'success'}>Pas encore</Label>
-                        </TableCell>
-
-                        
-                </TableRow>
-                <TableRow  hover  tabIndex={-1} role="checkbox">
-                        
-
-                        <TableCell  align="left">
-                            <Typography variant="subtitle2" noWrap>
-                              Gouaouri Mohamed
-                            </Typography>
-                         
-                        </TableCell>
-
-                        <TableCell align="left">
-                        <Typography variant="subtitle2" noWrap>
-                            4
-                          </Typography>
-                        </TableCell>
-
-                        <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
-                            1000
-                          </Typography>
-                        </TableCell>
-                        {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <img width={40} src='/assets/badges/Silver.png' />
-                            <Typography variant="subtitle2" noWrap>
-                              Silver
-                            </Typography>
-                          </Stack>
-                        </TableCell>
-
-                        
-                </TableRow>
-                  {/* {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )} */}
                 </TableBody>
 
                 {isNotFound && (
@@ -342,6 +241,7 @@ const isNotFound = !filteredUsers.length && !!filterName;
                 )}
               </Table>
             </TableContainer>
+            }
         </Card>
         
 

@@ -1,11 +1,16 @@
-import { Typography, Stack } from '@mui/material';
+import { Typography, Stack, Button } from '@mui/material';
 import WheelComponent from "./WheelComponent";
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
+import { getConfig } from '@edx/frontend-platform';
 
+// 
+import axios from 'axios';
 
-export default function SpinningWheel() {
+export default function SpinningWheel(props) {
+    const {canPlaySpinningWheel ,userId, score} = props
+
     const segments = [
         '50 pts',
         '40 pts',
@@ -26,29 +31,63 @@ export default function SpinningWheel() {
         '#EC3F3F',
         '#FF9000'
       ]
+  // contants 
+  const URL_PUT_UpdateScore = getConfig().LMS_BASE_URL +  "/api/gamification/v1/modify_score/"+userId+"/"
+  const URL_PUT_Spinning_wheel = getConfig().LMS_BASE_URL +  "/api/gamification/v1/user_gamifications/wheel_time_update/"+userId+"/"
+  let newScore = score
+  // useState
   const [pointsWin, setPointsWin] = useState(null)
-  const [canStart, setCanStart] = useState(true)
-  const onFinished = (winner) => {
-    setPointsWin(winner)
+  const [showPoints, setShowPoints] = useState(false)
+  
+  async function update_score(winner){
+    let newScore = parseInt(winner) + parseInt(score) 
+    if (canPlaySpinningWheel) {
+      try {
+        const result = await axios.put(URL_PUT_UpdateScore+""+newScore+"/")
+        try {
+          const currentTime = new Date();
+          const result = await axios.put(URL_PUT_Spinning_wheel,{last_time_played_spinningwheel:currentTime.toISOString()})
+          setShowPoints(true)
+          setPointsWin(winner)
+          setPlayed(true)
+        } catch(error) {
+          console.log(error)
+        }
+      }catch(err){
+        console.log(err)
+      }
+    }
   };
+  const [played, setPlayed] = useState(false)
+
   return (
     <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+        {!played && 
         <WheelComponent
           segments={segments}
           segColors={segColors}
-          onFinished={(winner) => onFinished(winner)}
+          onFinished={(winner) => {
+            console.log("onFinished={(winner) => {", played)
+            if(!played){
+              update_score(winner)
+            }else{
+              alert("9awed")
+            }
+            
+          }}
           primaryColor="black"
           contrastColor="white"
           buttonText="Spin"
           isOnlyOnce={false}
-          upDuration={500}
-          downDuration={600}
+          upDuration={200}
+          downDuration={200}
           fontFamily="Arial"
           width="2000" 
           height="2000"
-          canStart={false}
+          canStart={canPlaySpinningWheel}
         />
-        {canStart && 
+        }
+        {(!canPlaySpinningWheel)  && 
           <Stack sx={{ width: '100%' }} spacing={2}>
             <Alert severity="error">
               <AlertTitle><Typography variant="h6" gutterBottom> Info </Typography></AlertTitle>
@@ -59,11 +98,22 @@ export default function SpinningWheel() {
             </Alert>
           </Stack>
         }
+        {showPoints && 
+          <Stack sx={{ width: '100%' }} justifyContent={'center'} direction={'row'} alignItems={'center'} spacing={2}>
+          
+              <img src='/assets/pngwing.com.png' width="100" alt={''}></img>
 
+                <Alert severity="success">
+                  <Typography variant="h4" gutterBottom>
+                    Félicitation, vous avez gagné {pointsWin} !
+                  </Typography>
+                </Alert>
+                
+
+              <img src='/assets/pngwing.com.png' width="100" alt={''}></img>
+          </Stack>
+        }
         
-        <Typography variant="h4" mt={5} gutterBottom>
-            {pointsWin}
-        </Typography>
 
     </div>
   );

@@ -22,6 +22,8 @@ import {
   IconButton,
   TableContainer,
   TablePagination,
+  CircularProgress,
+  Box
 } from '@mui/material';
 
 import Label from '../label/Label';
@@ -31,12 +33,9 @@ import Scrollbar from '../scrollbar';
 import { UserListHead, UserListToolbar } from '../../sections/@dashboard/user';
 // mock
 import LEADERBORDLIST from '../../_mock/leaderboard'
-
-// front-app-session 
-import { useCookies } from 'react-cookie';
-import {AppContext} from '@edx/frontend-platform/react';
-import { useContext } from 'react';
+//
 import LeaderBoardUserListHead from '../../sections/@dashboard/user/LeaderBoardUserList';
+import { getConfig } from '@edx/frontend-platform';
 
 
 // Table Head 
@@ -78,18 +77,8 @@ function applySortFilter(array, comparator, query) {
   return stabilizedThis.map((el) => el[0]);
 }
 
-export default function LeaderBoard() {
-    // Authenticated user 
-  let userId = '';
-  const { authenticatedUser } = useContext(AppContext);
-  const user_data = useContext(AppContext);
+export default function LeaderBoard({userLeaderBord}) {
 
-  if (authenticatedUser) {
-    userId = user_data.authenticatedUser.userId;
-    console.log(user_data)
-  }
-
-  //  
   
 const [open, setOpen] = useState(null);
 
@@ -163,188 +152,95 @@ const filteredUsers = applySortFilter(LEADERBORDLIST, getComparator(order, order
 
 const isNotFound = !filteredUsers.length && !!filterName;
 
-
-// Ref 
-
   return (
     <>
         
         <Card>
-
-            <TableContainer sx={{minWidth: 1000 }}>
-              <Table>
-                <LeaderBoardUserListHead
-                  order={order}
-                  orderBy={orderBy}
-                  headLabel={TABLE_HEAD}
-                  rowCount={LEADERBORDLIST.length}
-                  onRequestSort={handleRequestSort}
-                />
-                <TableBody>
-                <TableRow  hover  tabIndex={-1} role="checkbox">
-                        
-
-                        <TableCell  align="left">
-                            <Typography variant="subtitle2" noWrap>
-                              Hafri Seif
-                            </Typography>
-                         
-                        </TableCell>
-
-                        <TableCell align="left">
-                        <Typography variant="subtitle2" noWrap>
-                            1
-                          </Typography>
-                        </TableCell>
-
-                        <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
-                            3000
-                          </Typography>
-                        </TableCell>
-                        {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <img width={40} src='/assets/badges/Master.png' />
-                            <Typography variant="subtitle2" noWrap>
-                              Master
-                            </Typography>
-                          </Stack>
-                        </TableCell>
-
-                        
-                </TableRow>
-                <TableRow  hover  tabIndex={-1} role="checkbox">
-                        
-
-                        <TableCell  align="left">
-                            <Typography variant="subtitle2" noWrap>
-                              Noui Akram
-                            </Typography>
-                         
-                        </TableCell>
-
-                        <TableCell align="left">
-                        <Typography variant="subtitle2" noWrap>
-                            2
-                          </Typography>
-                        </TableCell>
-
-                        <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
-                            2500
-                          </Typography>
-                        </TableCell>
-                        {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <img width={40} src='/assets/badges/Elite.png' />
-                            <Typography variant="subtitle2" noWrap>
-                              Elite
-                            </Typography>
-                          </Stack>
-                        </TableCell>
-
-                        
-                </TableRow>
-                <TableRow  hover  tabIndex={-1} role="checkbox">
-                        
-
-                        <TableCell  align="left">
-                            <Typography variant="subtitle2" noWrap>
-                              Benichou Younes
-                            </Typography>
-                         
-                        </TableCell>
-
-                        <TableCell align="left">
-                        <Typography variant="subtitle2" noWrap>
-                            3
-                          </Typography>
-                        </TableCell>
-
-                        <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
-                            2000
-                          </Typography>
-                        </TableCell>
-                        {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <img width={40} src='/assets/badges/Gold.png' />
-                            <Typography variant="subtitle2" noWrap>
-                              Gold
-                            </Typography>
-                          </Stack>
-                        </TableCell>
-
-                        
-                </TableRow>
-                <TableRow  hover  tabIndex={-1} role="checkbox">
-                        
-
-                        <TableCell  align="left">
-                            <Typography variant="subtitle2" noWrap>
-                              Gouaouri Mohamed
-                            </Typography>
-                         
-                        </TableCell>
-
-                        <TableCell align="left">
-                        <Typography variant="subtitle2" noWrap>
-                            4
-                          </Typography>
-                        </TableCell>
-
-                        <TableCell align="left">
-                          <Typography variant="subtitle2" noWrap>
-                            1000
-                          </Typography>
-                        </TableCell>
-                        {/* <TableCell align="left">{badge}</TableCell> */}
-                        <TableCell component="th" scope="row" padding="none">
-                          <Stack direction="row" alignItems="center" spacing={2}>
-                            <img width={40} src='/assets/badges/Silver.png' />
-                            <Typography variant="subtitle2" noWrap>
-                              Silver
-                            </Typography>
-                          </Stack>
-                        </TableCell>
-
-                        
-                </TableRow>
-                  {/* {emptyRows > 0 && (
-                    <TableRow style={{ height: 53 * emptyRows }}>
-                      <TableCell colSpan={6} />
-                    </TableRow>
-                  )} */}
-                </TableBody>
-
-                {isNotFound && (
+            {userLeaderBord ? 
+              <TableContainer sx={{minWidth: 1000 }}>
+                <Table>
+                  <LeaderBoardUserListHead
+                    order={order}
+                    orderBy={orderBy}
+                    headLabel={TABLE_HEAD}
+                    rowCount={LEADERBORDLIST.length}
+                    onRequestSort={handleRequestSort}
+                  />
                   <TableBody>
-                    <TableRow>
-                      <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
-                        <Paper
-                          sx={{
-                            textAlign: 'center',
-                          }}
-                        >
-                          <Typography variant="h6" paragraph>
-                            Not found
-                          </Typography>
-
-                          <Typography variant="body2">
-                            No results found for &nbsp;
-                            <strong>&quot;{filterName}&quot;</strong>.
-                            <br /> Try checking for typos or using complete words.
-                          </Typography>
-                        </Paper>
-                      </TableCell>
-                    </TableRow>
+                    {userLeaderBord.map((row) => {
+                      const {rank,username,score,badge} = row
+                      return (
+                        <TableRow  hover  tabIndex={-1} role="checkbox">
+                                
+                                <TableCell  align="left">
+                                    <Typography variant="subtitle2" noWrap>
+                                      {username}
+                                    </Typography>
+                                </TableCell>
+        
+                                <TableCell align="left">
+                                <Typography variant="subtitle2" noWrap>
+                                    {rank}
+                                  </Typography>
+                                </TableCell>
+        
+                                <TableCell align="left">
+                                  <Typography variant="subtitle2" noWrap>
+                                    {score}
+                                  </Typography>
+                                </TableCell>
+                                {/* <TableCell align="left">{badge}</TableCell> */}
+                                <TableCell component="th" scope="row" padding="none">
+                                  <Stack direction="row" alignItems="center" spacing={2}>
+                                    {badge && 
+                                    <>
+                                      <img width={40} src={getConfig().LMS_BASE_URL+""+badge.badge_image} />
+                                      <Typography variant="subtitle2" noWrap>
+                                        {badge.name}
+                                      </Typography>
+                                    </>
+                                    }
+                                  </Stack>
+                                </TableCell>
+        
+                                
+                        </TableRow>
+                        )
+                    })}
+                  
+                  
                   </TableBody>
-                )}
-              </Table>
-            </TableContainer>
+
+                  {isNotFound && (
+                    <TableBody>
+                      <TableRow>
+                        <TableCell align="center" colSpan={6} sx={{ py: 3 }}>
+                          <Paper
+                            sx={{
+                              textAlign: 'center',
+                            }}
+                          >
+                            <Typography variant="h6" paragraph>
+                              Not found
+                            </Typography>
+
+                            <Typography variant="body2">
+                              No results found for &nbsp;
+                              <strong>&quot;{filterName}&quot;</strong>.
+                              <br /> Try checking for typos or using complete words.
+                            </Typography>
+                          </Paper>
+                        </TableCell>
+                      </TableRow>
+                    </TableBody>
+                  )}
+                </Table>
+              </TableContainer>
+            :
+              <Box sx={{ display: 'flex' }}>
+                <CircularProgress />
+              </Box>
+            }
         </Card>
 
    

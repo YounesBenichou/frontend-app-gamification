@@ -8,13 +8,9 @@ import { styled } from '@mui/material/styles';
 import { Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import axios from 'axios';
-// front-app-session 
-import { useCookies } from 'react-cookie';
-import {AppContext} from '@edx/frontend-platform/react';
-import { useContext } from 'react';
-import palette from '../../theme/palette';
 import { getAuthenticatedHttpClient, getAuthenticatedUser } from '@edx/frontend-platform/auth';
-
+import palette from '../../theme/palette';
+import { getConfig } from '@edx/frontend-platform';
 
 const Item = styled(Paper)(({ theme }) => ({
 //   backgroundColor: theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
@@ -31,52 +27,44 @@ const badges = [{
 }]
 
 
-export default function ScoreBadge() {
-    // Authenticated user 
-  let userId = '';
-  const { authenticatedUser } = useContext(AppContext);
-  const user_data = useContext(AppContext);
+export default function ScoreBadge(props) {
+  const {name, score, badge, badgeUrl} = props;
+  const {handleOpenRoue} = props;
+  // const studio_request = async() =>{
+  //   const studio = {"org": "OpenCraftXX", "number": "Te9999", "display_name": "Test7", "run": "777"}
+  //   const URL_POST_UpdateScore = 'http://studio.local.overhang.io:8001/course/'
+  //   try{
+  //     const result = await axios.get('http://studio.local.overhang.io:8001/csrf/api/v1/token')
+  //     const headers = { 
+  //         'Content-Type': 'application/json',
+  //         'X-CSRFToken': result.data.csrfToken, // Include the CSRF token
+  //     }
+  //     try {
+  //       const { data } = await getAuthenticatedHttpClient().post(
+  //         URL_POST_UpdateScore,studio, headers
+  //       );
+  //       console.log('score update with success',data);
 
-  if (authenticatedUser) {
-    userId = user_data.authenticatedUser.userId;
-  }
-
-  const studio_request = async() =>{
-    const studio = {"org": "OpenCraftX", "number": "TEST4", "display_name4": "A Test Course4", "run": "1014"}
-    const URL_POST_UpdateScore = 'http://studio.local.overhang.io:8001/course/'
-    try{
-      const result = await axios.get('http://studio.local.overhang.io:8001/csrf/api/v1/token')
-      const headers = { 
-          'Content-Type': 'application/json',
-          'X-CSRFToken': result.data.csrfToken, // Include the CSRF token
-      }
-      try {
-        const { data } = await getAuthenticatedHttpClient().post(
-          URL_POST_UpdateScore,studio, headers
-        );
-        console.log('score update with success',data);
-
-      }catch (error) {
-        console.error('course', error);
-      }
-    }catch(error){
-      console.log("error token", error)
-    }
+  //     }catch (error) {
+  //       console.error('course', error);
+  //     }
+  //   }catch(error){
+  //     console.log("error token", error)
+  //   }
    
     
-  }
+  // }
 
-  const testapi = async() =>{
-    try{
-      const result = await axios.get('http://studio.local.overhang.io:8001/csrf/api/v1/token')
-      console.log(result.data)
-    }catch(error){
-      console.log("error token", error)
-    }
-  }
-  React.useEffect( ()=>{
-    console.log(user_data)
-  },[])
+  // const testapi = async() =>{
+  //   try{
+  //     const result = await axios.get('http://studio.local.overhang.io:8001/csrf/api/v1/token')
+  //     console.log(result.data)
+  //   }catch(error){
+  //     console.log("error token", error)
+  //   }
+  // }
+
+
   return (
     <>
     <Box sx={{ flexGrow: 1 ,
@@ -97,7 +85,7 @@ export default function ScoreBadge() {
           <Item sx={{textAlign: 'start',background: 'transparent',}}>
           <Stack direction="row" alignItems="center" spacing={2}>
               <Typography variant="h6">
-                  Bonjour ! <br></br>Hafri Seif
+                  Bonjour ! <br></br>{name}
               </Typography>
               <Box
                 width={140}
@@ -111,7 +99,7 @@ export default function ScoreBadge() {
                 border= "10px solid #D00000"
                 >
                   <Typography variant="h4" textAlign="center" gutterBottom>
-                      3000 <br/> pts
+                      {score} pts
                   </Typography>
             </Box>
             </Stack>
@@ -120,22 +108,23 @@ export default function ScoreBadge() {
           </Item> 
         </Grid>
         <Grid sx={{background:'#fff',background: 'transparent', display:'flex',borderRadius: '20px', justifyContent:'center', alignItems:'center'}} item xs={3}>     
-          <Button variant="contained" onClick={testapi} sx={{
+          <Button variant="contained" onClick={handleOpenRoue} sx={{
             transform: 'scale(2)',
             borderRadius: '40px',
+            textTransform : 'none',
             backgroundColor: palette.red['darker'],
             '&:hover': {
               backgroundColor: palette.red['darker'],
             },
-          }}>Convertir en Cadeaux !</Button>   
+          }}>Tourner la roue !</Button>   
         </Grid>
         <Grid sx={{background:'#fff', background: 'transparent', borderRadius: '20px',paddingRight:'40px', display:'flex', justifyContent:'end', alignItems:'center'}} item xs={4}>
           
           <Item sx={{textAlign: 'start', background: 'transparent',}}>
-          <Stack direction="column">
-            <img width="220" src={'http://local.overhang.io:8000/media/badge_images/Master.png'}/>
+          <Stack direction="column" justifyContent="center" alignItems="center">
+            <img width="170" src={getConfig().LMS_BASE_URL + badgeUrl}/>
             <Typography variant="h4" textAlign="center" gutterBottom>
-                Master
+                {badge}
             </Typography>
           </Stack>
              
