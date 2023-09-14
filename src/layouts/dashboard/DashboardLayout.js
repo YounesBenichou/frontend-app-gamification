@@ -13,7 +13,6 @@ const APP_BAR_DESKTOP = 92;
 const StyledRoot = styled('div')({
   display: 'flex',
   minHeight: '100%',
-  overflow: 'hidden',
 });
 
 const Main = styled('div')(({ theme }) => ({
@@ -47,6 +46,7 @@ export default function DashboardLayout() {
             <Route path="/"><GamificationPage /></Route>
       </Switch>
       </Main>
+
     </StyledRoot>
   );
 }

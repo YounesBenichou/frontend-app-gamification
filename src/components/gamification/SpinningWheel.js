@@ -61,19 +61,15 @@ export default function SpinningWheel(props) {
   const [played, setPlayed] = useState(false)
 
   return (
-    <div style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+    <>
+    <Stack direction={'column'}>
+    <div style={{display:'flex' , flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
         {!played && 
         <WheelComponent
           segments={segments}
           segColors={segColors}
           onFinished={(winner) => {
-            console.log("onFinished={(winner) => {", played)
-            if(!played){
               update_score(winner)
-            }else{
-              alert("9awed")
-            }
-            
           }}
           primaryColor="black"
           contrastColor="white"
@@ -82,13 +78,16 @@ export default function SpinningWheel(props) {
           upDuration={200}
           downDuration={200}
           fontFamily="Arial"
-          width="2000" 
-          height="2000"
+          width="600" 
+          height="600"
           canStart={canPlaySpinningWheel}
         />
-        }
-        {(!canPlaySpinningWheel)  && 
-          <Stack sx={{ width: '100%' }} spacing={2}>
+        }  
+
+    </div>
+    <div>
+      {(!canPlaySpinningWheel)  && 
+          <Stack spacing={2}>
             <Alert severity="error">
               <AlertTitle><Typography variant="h6" gutterBottom> Info </Typography></AlertTitle>
               <Typography variant="h6" gutterBottom>
@@ -113,8 +112,9 @@ export default function SpinningWheel(props) {
               <img src='/assets/pngwing.com.png' width="100" alt={''}></img>
           </Stack>
         }
-        
-
     </div>
+    </Stack>
+
+    </>
   );
 }

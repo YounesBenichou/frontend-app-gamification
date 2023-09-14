@@ -157,6 +157,7 @@ const isNotFound = !filteredUsers.length && !!filterName;
         
         <Card>
             {userLeaderBord ? 
+            <Scrollbar>
               <TableContainer sx={{minWidth: 1000 }}>
                 <Table>
                   <LeaderBoardUserListHead
@@ -236,6 +237,7 @@ const isNotFound = !filteredUsers.length && !!filterName;
                   )}
                 </Table>
               </TableContainer>
+            </Scrollbar>
             :
               <Box sx={{ display: 'flex' }}>
                 <CircularProgress />

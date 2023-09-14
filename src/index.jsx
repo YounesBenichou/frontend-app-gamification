@@ -1,5 +1,4 @@
 import "babel-polyfill";
-
 import {
   APP_INIT_ERROR,
   APP_READY,

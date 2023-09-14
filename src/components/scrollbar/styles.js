@@ -7,7 +7,9 @@ import { alpha, styled } from '@mui/material/styles';
 export const StyledRootScrollbar = styled('div')(() => ({
   flexGrow: 1,
   height: '100%',
-  overflow: 'hidden',
+  width: '100%',
+  overflowX: 'scroll',
+  // overflow: 'hidden',
 }));
 
 export const StyledScrollbar = styled(SimpleBar)(({ theme }) => ({

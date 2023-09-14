@@ -171,6 +171,7 @@ const isNotFound = !filteredUsers.length && !!filterName;
         
         <Card>
             {userAwards && 
+            <Scrollbar>
             <TableContainer sx={{minWidth: 1000 }}>
               <Table>
                 <AwardUserListHead
@@ -241,6 +242,8 @@ const isNotFound = !filteredUsers.length && !!filterName;
                 )}
               </Table>
             </TableContainer>
+            </Scrollbar>
+
             }
         </Card>
         

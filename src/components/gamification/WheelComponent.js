@@ -12,12 +12,12 @@ const WheelComponent = ({
   contrastColor,
   buttonText,
   isOnlyOnce = true,
-  size = 290,
+  size = 200,
   upDuration = 1000,
   downDuration = 100,
   fontFamily = "proxima-nova",
-  width = 100,
-  height = 100,
+  width,
+  height,
   canStart = true,
 }) => {
   let currentSegment = "";
@@ -47,11 +47,10 @@ const WheelComponent = ({
   };
 
   const initCanvas = () => {
+    console.log(width,height)
     let canvas = document.getElementById("canvas");
     if (navigator.appVersion.indexOf("MSIE") !== -1) {
       canvas = document.createElement("canvas");
-      canvas.setAttribute("width", width);
-      canvas.setAttribute("height", height);
       canvas.setAttribute("id", "canvas");
       document.getElementById("wheel").appendChild(canvas);
     }
@@ -224,10 +223,10 @@ const WheelComponent = ({
     <div id="wheel">
       <canvas
         id="canvas"
-        width="600"
-        height="600"
+        width={width}
+        height={height}
         style={{
-          pointerEvents: isFinished && isOnlyOnce ? "none" : "auto"
+          pointerEvents: isFinished && isOnlyOnce ? "none" : "auto",
         }}
       />
     </div>

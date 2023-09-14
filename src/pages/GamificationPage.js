@@ -44,8 +44,6 @@ const styleRoue = {
   p: 5,
   boxShadow: '0px 0px 16px 0px rgba(0, 0, 0, 0.15), 0px 0px 10px 0px rgba(0, 0, 0, 0.15)',
   backgroundColor: 'white',
-  overflow: "hidden",
-  overflowY: "scroll",
 };
 
 const styleAward = {
@@ -66,6 +64,7 @@ const styleAward = {
   boxShadow: '0px 0px 16px 0px rgba(0, 0, 0, 0.15), 0px 0px 10px 0px rgba(0, 0, 0, 0.15)',
   backgroundColor: 'white',
 };
+
 
 
 export default function GamificationPage() {
@@ -150,7 +149,7 @@ export default function GamificationPage() {
   }
 
   
-
+  
   // award 
   // const awards = [
   //   {
@@ -196,21 +195,28 @@ export default function GamificationPage() {
       <Helmet>
         <title> Mes accomplissements </title>
       </Helmet>
-      
-      <img src={'/assets/background-layers.svg'} style={{
-        position: 'absolute',
-        left: '-20%'
-      }}>
-      </img>
-      <img src={'/assets/background-layers.svg'} style={{
-        position: 'absolute',
-        left: '85%',
-        top: '20%'
-      }}></img>
-      
+        <div>
+          <img src={'/assets/background-layers.svg'} style={{
+            position: 'absolute',
+            right: '-17%',
+            top: '30%',
+            width: '35%',
+            }}>
+          </img>
+        </div>
+        <div>
+          <img src={'/assets/background-layers.svg'} style={{
+            position: 'absolute',
+            left: '-17%',    
+            top: '18%',  
+            width: '35%',      
+          }}></img>
+        </div>
+
+        
+        
      { userGamification ? ( 
       <Container>
-      
         <ScoreBadge name={user_data.authenticatedUser.name} score={userGamification.user_score.score}
         badge={userGamification.last_created_badge.name} badgeUrl={userGamification.last_created_badge.badge_image}
         handleOpenRoue={handleOpenRoue}
