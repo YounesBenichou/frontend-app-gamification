@@ -178,7 +178,7 @@ const WheelComponent = ({
     ctx.font = "bold 2em " + fontFamily;
     ctx.fillStyle = contrastColor || "white";
     ctx.textAlign = "center";
-    ctx.fillText(buttonText || "Spin", centerX, centerY + 3);
+    ctx.fillText(buttonText, centerX, centerY + 3);
     ctx.stroke();
 
     // Draw outer circle
@@ -186,7 +186,7 @@ const WheelComponent = ({
     ctx.arc(centerX, centerY, size, 0, PI2, false);
     ctx.closePath();
     ctx.lineWidth = 25;
-    ctx.strokeStyle = primaryColoraround || "white";
+    ctx.strokeStyle = "#FFC702";
     ctx.stroke();
   };
 

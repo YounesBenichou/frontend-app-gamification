@@ -140,7 +140,7 @@ export default function ScoreBadge(props) {
           <Item sx={{textAlign: 'start',background: 'transparent',}}>
           <StackItem direction="row" alignItems="center" spacing={2}>
               <TypographyItem variant='h6'>
-                  Bonjour Younes Benichou ! <br></br>{name}
+                  Bonjour {name}! <br></br>
               </TypographyItem>
               <Box
                 width={140}

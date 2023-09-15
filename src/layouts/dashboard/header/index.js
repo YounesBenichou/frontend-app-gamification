@@ -6,10 +6,14 @@ import { Box, Stack, AppBar, Toolbar, IconButton, Button } from '@mui/material';
 import { bgBlur } from '../../../utils/cssStyles';
 // components
 //
+import Iconify from '../../../components/iconify';
 import AccountPopover from './AccountPopover';
 import NotificationsPopover from './NotificationsPopover';
 import ButtonGroup from '@mui/material/ButtonGroup';
 import palette from '../../../theme/palette';
+import { useCookies } from 'react-cookie';
+import {AppContext} from '@edx/frontend-platform/react';
+import { useContext } from 'react';
 
 // ----------------------------------------------------------------------
 
@@ -51,33 +55,112 @@ const HeaderNavigationButton = styled(Button)(({theme})=>({
     border: '0px',
  },
 }))
-const buttons = [
-  <HeaderNavigationButton key="one">Mes cours</HeaderNavigationButton>,
-  <HeaderNavigationButton key="two">Explorer cours</HeaderNavigationButton>,
-  <HeaderNavigationButton key="three">Articles</HeaderNavigationButton>,
-];
+
+const StackItem = styled(Stack)(({ theme }) => ({
+  [theme.breakpoints.up('lg')]: {
+    // backgroundColor: 'yellow', // Style for screens smaller than 'sm'
+    marginLeft:  '150px'
+  },
+}));
+
+const ButtonItem = styled(Stack)(({ Button }) => ({
+  color: "#000",
+  display:'flex',
+  justifyContent: 'center',
+  background: '#fff',
+  textAlign: 'center',
+  fontFamily: 'Ubuntu',
+  fontSize: '16px',
+  fontStyle: 'normal',
+  fontWeight: '600',
+  lineHeight: 'normal',
+  padding: '28px',
+  minHeight: HEADER_DESKTOP,
+  cursor:'pointer',
+}));
+
+
+const ButtonGroupItem = styled(ButtonGroup)(({ theme }) => ({
+  flexGrow: 10,
+  [theme.breakpoints.down('lg')]: {
+    // backgroundColor: 'yellow', // Style for screens smaller than 'sm'
+    display:  'none'
+  },
+
+
+}));
+
 
 export default function Header({ onOpenNav }) {
+  var _useContext = useContext(AppContext),
+  authenticatedUser = _useContext.authenticatedUser,
+  config = _useContext.config;
+
+  const navItems = [
+    {
+      title: 'Cours',
+      path: config.LMS_BASE_URL,
+    },
+    {
+      title: 'Explorer les cours',
+      path: config.EXPLORE_COURSES_URL+'/explore-courses/',
+    },
+    {
+      title: 'Article',
+      path: config.BLOG_URL+'/blog/',
+    }
+  ]
   return (
     <StyledRoot>
       <StyledToolbar sx={{
         display:'flex',
         justifyContent: 'space-between',
+        borderBottom: '0px',
+        boxShadow: '0px 4px 4px rgba(0,0,0,0.25)',
       }}>
-        <Stack
+        
+        <IconButton
+          onClick={onOpenNav}
+          sx={{
+            mr: 1,
+            color: 'text.primary',
+            display: { lg: 'none' },
+          }}
+        >
+          <Iconify icon="eva:menu-2-fill" />
+        </IconButton>
+        <StackItem
             direction="row"
             alignItems="center"
             spacing={{
               xs: 0.5,
               sm: 1,
             }}
+            
+
           >
-        <img width={120} src={'/assets/djezzy_academy.jpg'}></img>
+          <img width={120} src={'/assets/djezzy_academy.jpg'}></img>
         
-        <ButtonGroup size="large" aria-label="large button group">
-          {buttons}
-        </ButtonGroup>
-        </Stack>
+        <ButtonGroupItem size="large" sx={{
+          display:'flex',
+          justifyContent: 'flex-start',
+          alignContent: 'center',
+          paddingLeft: '20px',
+          // height: '100%',
+          borderRadius: '0px',
+          boxShadow: '0'
+          
+        }} variant="contained" aria-label="outlined primary button group">
+          {navItems.map((item) => (
+          
+          <ButtonItem onClick={()=>{
+            window.open(item.path, '_self');
+          }}  >{item.title}</ButtonItem>
+        ))}
+
+          
+        </ButtonGroupItem>
+        </StackItem>
         {/* <Searchbar /> */}
         {/* <Box sx={{ flexGrow: 1 }} /> */}
         
@@ -89,7 +172,7 @@ export default function Header({ onOpenNav }) {
               sm: 1,
             }}
           >
-          <NotificationsPopover />
+          {/* <NotificationsPopover /> */}
           <AccountPopover />
         </Stack>
       </StyledToolbar>

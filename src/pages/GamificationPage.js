@@ -8,6 +8,7 @@ import Alert from '@mui/material/Alert';
 import AlertTitle from '@mui/material/AlertTitle';
 // components
 import Modal from '@mui/material/Modal';
+import { styled } from '@mui/material/styles';
 
 // mock
 // style 
@@ -65,7 +66,13 @@ const styleAward = {
   backgroundColor: 'white',
 };
 
-
+const BoxItem = styled(Box)(({ theme }) => ({
+  
+  [theme.breakpoints.down('lg')]: {
+    display:  'none'
+  },
+  
+}));
 
 export default function GamificationPage() {
 
@@ -148,45 +155,7 @@ export default function GamificationPage() {
     setOpenAward(false)
   }
 
-  
-  
-  // award 
-  // const awards = [
-  //   {
-  //     id: '2569ce0d517a7f06d3ea1f24',
-  //     createdAt: '27/03/2019',
-  //     description: 'Cours sur Amazon Web Services - AWS Cloud Practitioner Essentials',
-  //     logo: '/assets/award.webp',
-  //     title: 'Fomration sur AWS',
-  //     points: '594'
-  //   },
-  //   {
-  //     id: '2569ce0d517a7f06d3ea1f24',
-  //     createdAt: '27/03/2019',
-  //     description: 'Cours sur Amazon Web Services - AWS Cloud Practitioner Essentials',
-  //     logo: '/assets/award.webp',
-  //     title: 'Fomration sur AWS',
-  //     points: '594'
-  //   },
-  //   {
-  //     id: '2569ce0d517a7f06d3ea1f24',
-  //     createdAt: '27/03/2019',
-  //     description: 'Cours sur Amazon Web Services - AWS Cloud Practitioner Essentials',
-  //     logo: '/assets/award.webp',
-  //     title: 'Fomration sur AWS',
-  //     points: '594'
-  //   },
-  //   {
-  //     id: '2569ce0d517a7f06d3ea1f24',
-  //     createdAt: '27/03/2019',
-  //     description: 'Cours sur Amazon Web Services - AWS Cloud Practitioner Essentials',
-  //     logo: '/assets/award.webp',
-  //     title: 'Fomration sur AWS',
-  //     points: '594'
-  //   },
-  // ];
-
-  // UseEffect  : 
+   
   useEffect(()=>{
     userGamificationInit()
   },[])
@@ -195,7 +164,7 @@ export default function GamificationPage() {
       <Helmet>
         <title> Mes accomplissements </title>
       </Helmet>
-        <div>
+        <BoxItem>
           <img src={'/assets/background-layers.svg'} style={{
             position: 'absolute',
             right: '-17%',
@@ -203,20 +172,20 @@ export default function GamificationPage() {
             width: '35%',
             }}>
           </img>
-        </div>
-        <div>
+        </BoxItem>
+        <BoxItem>
           <img src={'/assets/background-layers.svg'} style={{
             position: 'absolute',
             left: '-17%',    
             top: '18%',  
             width: '35%',      
           }}></img>
-        </div>
+        </BoxItem>
 
         
         
      { userGamification ? ( 
-      <Container>
+      <Container sx={{marginTop: '50px'}}>
         <ScoreBadge name={user_data.authenticatedUser.name} score={userGamification.user_score.score}
         badge={userGamification.last_created_badge.name} badgeUrl={userGamification.last_created_badge.badge_image}
         handleOpenRoue={handleOpenRoue}

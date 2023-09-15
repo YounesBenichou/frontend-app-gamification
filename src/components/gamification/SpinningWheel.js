@@ -22,14 +22,14 @@ export default function SpinningWheel(props) {
         '1 pts',
       ]
       const segColors = [
-        '#EE4040',
-        '#F0CF50',
-        '#815CD1',
-        '#3DA5E0',
-        '#34A24F',
-        '#F9AA1F',
-        '#EC3F3F',
-        '#FF9000'
+        '#EF3B52',
+        '#E1E8ED',
+        '#EF3B52',
+        '#E1E8ED',
+        '#EF3B52',
+        '#E1E8ED',
+        '#EF3B52',
+        '#E1E8ED',
       ]
   // contants 
   const URL_PUT_UpdateScore = getConfig().LMS_BASE_URL +  "/api/gamification/v1/modify_score/"+userId+"/"
@@ -71,9 +71,9 @@ export default function SpinningWheel(props) {
           onFinished={(winner) => {
               update_score(winner)
           }}
-          primaryColor="black"
+          primaryColor="#FFC702"
           contrastColor="white"
-          buttonText="Spin"
+          buttonText=""
           isOnlyOnce={false}
           upDuration={200}
           downDuration={200}
