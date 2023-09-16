@@ -119,10 +119,10 @@ export const AwardCard = (props) => {
             onClick={convert_to_award}
             >
             
-            <Typography variant='h6' ml={1} mr={3} noWrap>
+            <Typography variant='h6' ml={2} mr={2} color={'white'} noWrap>
                 Convertir
             </Typography>
-            <img width="20" src={'/assets/icons/convert.png'} />
+    
           </Button>
           }
           

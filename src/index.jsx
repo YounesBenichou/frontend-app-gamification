@@ -13,7 +13,6 @@ import App from "./App";
 import { HelmetProvider } from 'react-helmet-async';
 
 
-
 subscribe(APP_READY, () => {
   ReactDOM.render(
     <React.StrictMode>
