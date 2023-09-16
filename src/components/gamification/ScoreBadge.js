@@ -60,7 +60,7 @@ const TypographyItem = styled(Typography)(({ theme }) => ({
 }));
 
 export default function ScoreBadge(props) {
-  const {name, score, badge, badgeUrl} = props;
+  const {name, score, last_created_badge} = props;
   const {handleOpenRoue} = props;
   // const studio_request = async() =>{
   //   const studio = {"org": "OpenCraftXX","display_name": "admin test", "number": "15","course_type":'Blended', 'self_paced':true, "run": "777"}
@@ -178,10 +178,18 @@ export default function ScoreBadge(props) {
         <GridItem xs={12} sm={12} md={3} sx={{background:'#fff', display:'flex', background: 'transparent',borderRadius: '20px', justifyContent:'center', alignItems:'center'}} item>
           <Item sx={{textAlign: 'start',background: 'transparent',}}>
           <Stack direction="column" justifyContent="center" alignItems="center">
-            <img width="170" src={getConfig().LMS_BASE_URL + badgeUrl}/>
+            {last_created_badge ? 
+            <>
+              <img width="170" src={getConfig().LMS_BASE_URL + last_created_badge.badge_image}/>
+              <Typography variant="h4" textAlign="center" gutterBottom>
+                  {last_created_badge.name}
+              </Typography>
+            </>
+            :
             <Typography variant="h4" textAlign="center" gutterBottom>
-                {badge}
-            </Typography>
+                  Aucun badge
+              </Typography>
+            }
           </Stack> 
           </Item> 
         </GridItem>

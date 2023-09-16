@@ -13,6 +13,7 @@ import NavSection from '../../../components/nav-section';
 import navConfig from './config';
 import { useCookies } from 'react-cookie';
 import {AppContext} from '@edx/frontend-platform/react';
+import { getConfig } from '@edx/frontend-platform';
 
 
 
@@ -71,7 +72,7 @@ export default function Nav({ openNav, onCloseNav }) {
       }}
     >
       <Box sx={{ px: 2.5, py: 3, display: 'inline-flex' }}>
-        {/* <img src={'/assets/djezzy_academy.jpg'} width={100}></img> */}
+        <img src={getConfig().LOGO_URL} width={100}></img>
       </Box>
 
       <Box sx={{ mt: 3,mb: 3, mx: 2.5 }}>

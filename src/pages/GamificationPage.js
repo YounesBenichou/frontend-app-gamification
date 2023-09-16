@@ -107,6 +107,7 @@ export default function GamificationPage() {
     const userGamificationInit = async ()=> {
       try {
         const result = await axios.get(URL_GET_UserGamification) 
+        console.log(result.data)
         setUserGamification(result.data)
         setLast_time_played_spinningwheel(new Date(result.data.last_time_played_spinningwheel.last_time_played_spinningwheel))
         try {
@@ -186,8 +187,8 @@ export default function GamificationPage() {
         
      { userGamification ? ( 
       <Container sx={{marginTop: '50px'}}>
-        <ScoreBadge name={user_data.authenticatedUser.name} score={userGamification.user_score.score}
-        badge={userGamification.last_created_badge.name} badgeUrl={userGamification.last_created_badge.badge_image}
+        <ScoreBadge name={user_data.authenticatedUser.name} score={userGamification.user_score.score} last_created_badge={userGamification.last_created_badge}
+        
         handleOpenRoue={handleOpenRoue}
         ></ScoreBadge>
 
