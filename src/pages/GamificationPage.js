@@ -165,22 +165,11 @@ export default function GamificationPage() {
       <Helmet>
         <title> Mes accomplissements </title>
       </Helmet>
-        <BoxItem>
-          <img src={'/assets/background-layers.svg'} style={{
-            position: 'absolute',
-            right: '-17%',
-            top: '30%',
-            width: '35%',
-            }}>
-          </img>
+        <BoxItem className='triangle-left'>
+
         </BoxItem>
-        <BoxItem>
-          <img src={'/assets/background-layers.svg'} style={{
-            position: 'absolute',
-            left: '-17%',    
-            top: '18%',  
-            width: '35%',      
-          }}></img>
+        <BoxItem className='triangle-right'>
+          
         </BoxItem>
 
         

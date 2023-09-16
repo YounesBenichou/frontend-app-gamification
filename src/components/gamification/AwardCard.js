@@ -121,8 +121,9 @@ export const AwardCard = (props) => {
             
             <Typography variant='h6' ml={2} mr={2} color={'white'} noWrap>
                 Convertir
+                
             </Typography>
-    
+  
           </Button>
           }
           

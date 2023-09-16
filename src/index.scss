@@ -45,6 +45,29 @@ body,
 
 
 .convertir{
-  background: url(../public/assets/icons/convert.png);
+  background: url('../public/assets/icons/convert.png');
   width: 20px;
+  height: 100%;
+}
+
+
+.triangle-left{
+  position: absolute;
+  right: -17%;
+  top: 30%;
+  width: 35%;
+
+  height: 100%;
+  background: url('../public/assets/background-layers.svg') no-repeat ;
+  z-index: 99;
+}
+
+.triangle-right{
+  position: absolute;
+  left: -17%;    
+  top: 18%;  
+  width: 35%;  
+  height: 100%;
+  z-index: 99;
+  background: url('../public/assets/background-layers.svg') no-repeat;
 }
